@@ -18,7 +18,7 @@ var alphabet = map[string]string{
 	"8": "eight",
 	"9": "nine",
 	"a": "alpha",
-	"b": "beta",
+	"b": "bravo",
 	"c": "charlie",
 	"d": "delta",
 	"e": "echo",
@@ -47,7 +47,7 @@ var alphabet = map[string]string{
 }
 
 func ToNatoAlphabet(str string) string {
-	characters := make([]string, 0)
+	var characters []string
 
 	for _, char := range str {
 		natoCharacter, _ := convertCharacter(string(char))
@@ -60,6 +60,18 @@ func ToNatoAlphabet(str string) string {
 	}
 
 	return strings.Join(characters, " ")
+}
+
+func FromNatoAlphabet(natoString string) string {
+	characters := strings.Split(natoString, " ")
+	reverseAlphabet := reverseAlphabet()
+	regularString := ""
+
+	for _, char := range characters {
+		regularString += reverseAlphabet[char]
+	}
+
+	return regularString
 }
 
 func convertCharacter(c string) (string, error) {
@@ -75,4 +87,18 @@ func convertCharacter(c string) (string, error) {
 	outString += alphabet[strings.ToLower(c)]
 
 	return outString, nil
+}
+
+func reverseAlphabet() map[string]string {
+	reverseAlphabet := make(map[string]string, 0)
+
+	for key, val := range alphabet {
+		reverseAlphabet[val] = key
+
+		if (strings.ToUpper(key) != key) {
+			reverseAlphabet["capital-"+val] = strings.ToUpper(key)
+		}
+	}
+
+	return reverseAlphabet
 }

@@ -1,14 +1,26 @@
 package main
 
 import (
-	"os"
 	"github.com/sakjur/natonize/pkg/natonize"
 	"strings"
 	"fmt"
+	"flag"
 )
 
 func main() {
-	args := os.Args[1:]
+	var output string
 
-	fmt.Println(natonize.ToNatoAlphabet(strings.Join(args, " ")))
+	reverseNato := flag.Bool("reverse", false, "Reverse a string with NATO values")
+	flag.Parse()
+
+	args := flag.Args()
+	input := strings.Join(args, " ")
+
+	if *reverseNato {
+		output = natonize.FromNatoAlphabet(input)
+	} else {
+		output = natonize.ToNatoAlphabet(input)
+	}
+
+	fmt.Println(output)
 }
