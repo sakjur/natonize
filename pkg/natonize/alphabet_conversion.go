@@ -44,6 +44,10 @@ var alphabet = map[string]string{
 	"y": "yankee",
 	"z": "zulu",
 	" ": "space",
+	"-": "dash",
+	".": "period",
+	",": "comma",
+	"!": "bang",
 }
 
 func ToNatoAlphabet(str string) string {
@@ -90,7 +94,7 @@ func convertCharacter(c string) (string, error) {
 }
 
 func reverseAlphabet() map[string]string {
-	reverseAlphabet := make(map[string]string, 0)
+	reverseAlphabet := make(map[string]string, len(alphabet))
 
 	for key, val := range alphabet {
 		reverseAlphabet[val] = key

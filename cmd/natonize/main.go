@@ -5,7 +5,7 @@ import (
 	"strings"
 	"fmt"
 	"flag"
-)
+	)
 
 func main() {
 	var output string
@@ -15,6 +15,10 @@ func main() {
 
 	args := flag.Args()
 	input := strings.Join(args, " ")
+
+	if input == "" {
+		fmt.Println("Usage: natonize [--reverse] <term to natonize>")
+	}
 
 	if *reverseNato {
 		output = natonize.FromNatoAlphabet(input)
