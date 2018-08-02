@@ -1,9 +1,8 @@
 package natonize
 
 import (
-	"strings"
-	"errors"
 	"fmt"
+	"strings"
 )
 
 var alphabet = map[string]string{
@@ -54,7 +53,7 @@ func ToNatoAlphabet(str string) string {
 	var characters []string
 
 	for _, char := range str {
-		natoCharacter, _ := convertCharacter(string(char))
+		natoCharacter := convertCharacter(string(char))
 
 		if natoCharacter == "" {
 			natoCharacter = fmt.Sprintf("unknown(%s)", string(char))
@@ -78,19 +77,15 @@ func FromNatoAlphabet(natoString string) string {
 	return regularString
 }
 
-func convertCharacter(c string) (string, error) {
-	if len(c) != 1 {
-		return "", errors.New("must convert single character")
-	}
-
+func convertCharacter(c string) string {
 	outString := ""
 
-	if (strings.ToLower(c) != c) {
+	if strings.ToLower(c) != c {
 		outString += "capital-"
 	}
 	outString += alphabet[strings.ToLower(c)]
 
-	return outString, nil
+	return outString
 }
 
 func reverseAlphabet() map[string]string {
@@ -99,7 +94,7 @@ func reverseAlphabet() map[string]string {
 	for key, val := range alphabet {
 		reverseAlphabet[val] = key
 
-		if (strings.ToUpper(key) != key) {
+		if strings.ToUpper(key) != key {
 			reverseAlphabet["capital-"+val] = strings.ToUpper(key)
 		}
 	}

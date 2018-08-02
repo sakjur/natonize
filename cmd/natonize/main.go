@@ -1,11 +1,11 @@
 package main
 
 import (
+	"flag"
+	"fmt"
 	"github.com/sakjur/natonize/pkg/natonize"
 	"strings"
-	"fmt"
-	"flag"
-	)
+)
 
 func main() {
 	var output string
@@ -18,6 +18,7 @@ func main() {
 
 	if input == "" {
 		fmt.Println("Usage: natonize [--reverse] <term to natonize>")
+		return
 	}
 
 	if *reverseNato {
