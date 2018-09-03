@@ -10,14 +10,14 @@ import (
 func main() {
 	var output string
 
-	reverseNato := flag.Bool("reverse", false, "Reverse a string with NATO values")
+	reverseNato := flag.Bool("invert", false, "Invert a string with NATO values")
 	flag.Parse()
 
 	args := flag.Args()
 	input := strings.Join(args, " ")
 
 	if input == "" {
-		fmt.Println("Usage: natonize [--reverse] <term to natonize>")
+		fmt.Println("Usage: natonize [--invert] <term to natonize>")
 		return
 	}
 

@@ -12,9 +12,9 @@ $ natonize Illinois
 capital-india lima lima india november oscar india sierra
 ```
 
-Add `--reverse` to reverse the process.
+Add `--invert` to reverse the process.
 ```
-$ natonize --reverse capital-india lima lima india november oscar india sierra
+$ natonize --invert capital-india lima lima india november oscar india sierra
 Illinois
 ```
 
