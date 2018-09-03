@@ -47,6 +47,9 @@ var alphabet = map[string]string{
 	".": "period",
 	",": "comma",
 	"!": "bang",
+	"+": "plus",
+	"/": "slash",
+	"\\": "backslash",
 }
 
 func ToNatoAlphabet(str string) string {
